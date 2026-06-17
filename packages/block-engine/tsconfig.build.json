@@ -2,8 +2,8 @@
   "extends": "@extension/tsconfig/module",
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "dist",
-    "noEmit": true
+    "outDir": "dist"
   },
-  "include": ["index.mts", "lib", "vitest.config.ts"]
+  "include": ["index.mts", "lib"],
+  "exclude": ["**/*.spec.ts"]
 }
