@@ -21,6 +21,10 @@
       "outputs": ["../../dist/**", "dist/**"],
       "cache": false
     },
+    "test": {
+      "dependsOn": ["^ready"],
+      "cache": false
+    },
     "e2e": {
       "cache": false
     },
