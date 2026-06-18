@@ -285,6 +285,10 @@ importers:
         version: 4.41.0
 
   packages/storage:
+    dependencies:
+      '@extension/block-engine':
+        specifier: workspace:*
+        version: link:../block-engine
     devDependencies:
       '@extension/tsconfig':
         specifier: workspace:*
