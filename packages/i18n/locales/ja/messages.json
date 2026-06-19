@@ -1,0 +1,108 @@
+{
+  "extensionDescription": {
+    "description": "Extension description",
+    "message": "集中を妨げるサイトを段階的に抑止する Chrome 拡張機能"
+  },
+  "extensionName": {
+    "description": "Extension name",
+    "message": "FocusGate"
+  },
+  "toggleTheme": {
+    "message": "テーマを切り替える"
+  },
+  "injectButton": {
+    "message": "クリックしてコンテンツスクリプトを挿入"
+  },
+  "greeting": {
+    "description": "Greeting message",
+    "message": "こんにちは、$NAME$ さん",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "John Doe"
+      }
+    }
+  },
+  "hello": {
+    "description": "Placeholder example",
+    "message": "こんにちは $1"
+  },
+  "displayErrorInfo": {
+    "message": "エラーが発生しました"
+  },
+  "displayErrorDescription": {
+    "message": "申し訳ありません。ページの読み込み中に問題が発生しました。"
+  },
+  "displayErrorDetailsInfo": {
+    "message": "エラーの詳細:"
+  },
+  "displayErrorUnknownErrorInfo": {
+    "message": "不明なエラー"
+  },
+  "displayErrorReset": {
+    "message": "再実行"
+  },
+  "popupTitle": {
+    "message": "FocusGate"
+  },
+  "globalEnabled": {
+    "message": "ブロックを有効化"
+  },
+  "warningLevel": {
+    "message": "警告レベル"
+  },
+  "levelB": {
+    "message": "確認（B）"
+  },
+  "levelC": {
+    "message": "ブロック（C）"
+  },
+  "openOptions": {
+    "message": "ブロックリストを管理"
+  },
+  "optionsTitle": {
+    "message": "ブロックリスト"
+  },
+  "addSite": {
+    "message": "追加"
+  },
+  "domainPlaceholder": {
+    "message": "example.com"
+  },
+  "labelPlaceholder": {
+    "message": "ラベル（任意）"
+  },
+  "edit": {
+    "message": "編集"
+  },
+  "save": {
+    "message": "保存"
+  },
+  "cancel": {
+    "message": "キャンセル"
+  },
+  "delete": {
+    "message": "削除"
+  },
+  "noSites": {
+    "message": "登録されたサイトはまだありません。"
+  },
+  "errorInvalidDomain": {
+    "message": "ドメインの形式が正しくありません。"
+  },
+  "errorDuplicateDomain": {
+    "message": "このドメインは既に登録されています。"
+  },
+  "overlayHeading": {
+    "message": "ひと呼吸おきましょう"
+  },
+  "overlayMessage": {
+    "message": "このサイトは集中を妨げる可能性があります。本当に開きますか？"
+  },
+  "proceed": {
+    "message": "それでも開く"
+  },
+  "stopBrowsing": {
+    "message": "やめておく"
+  }
+}
