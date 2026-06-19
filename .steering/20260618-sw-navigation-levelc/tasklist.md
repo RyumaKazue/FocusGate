@@ -53,44 +53,45 @@
 
 ## フェーズ5: 縦スライス実機確認
 
-- [ ] Chrome（一時プロファイル）に dist を読み込み
-- [ ] レベルC 設定で `youtube.com` → `blocked.html?site=...` リダイレクトを確認
-- [ ] `blocked.html` に対象サイト名（`label ?? domain`）が表示される
-- [ ] `globalEnabled=false` で素通しを確認
-- [ ] サイト個別 `enabled=false` で素通しを確認
-- [ ] `m.youtube.com`/`music.youtube.com` でブロック、`notyoutube.com` で素通しを確認
-- [ ] `blocked.html` 自体が再ブロックされないことを確認
-- [ ] popup/options 未実装のため、設定変更はデバッグコンソール（SW）から `focusgateSettingsStorage` 経由で行い、`subscribe` 反映を確認
+- [x] Chrome（一時プロファイル）に dist を読み込み ※ユーザー実機確認済み
+- [x] レベルC 設定で `youtube.com` → `blocked.html?site=...` リダイレクトを確認
+- [x] `blocked.html` に対象サイト名（`label ?? domain`）が表示される
+- [x] `globalEnabled=false` で素通しを確認
+- [x] サイト個別 `enabled=false` で素通しを確認
+- [x] `m.youtube.com`/`music.youtube.com` でブロック、`notyoutube.com` で素通しを確認
+- [x] `blocked.html` 自体が再ブロックされないことを確認
+- [x] popup/options 未実装のため、設定変更はデバッグコンソール（SW）から `focusgateSettingsStorage` 経由で行い、`subscribe` 反映を確認
 
 ## フェーズ6: ドキュメント更新
 
-- [ ] 実装後の振り返り（このファイルの下部に記録）
+- [x] 実装後の振り返り（このファイルの下部に記録）
 
 ---
 
 ## 実装後の振り返り
 
 ### 実装完了日
-{YYYY-MM-DD}
+2026-06-18
 
 ### 計画と実績の差分
 
 **計画と異なった点**:
--
+- 計画どおり。SW の設定キャッシュ（`get()` + `subscribe`）＋ `onBeforeNavigate`(frame0) でのレベルC リダイレクトで縦スライスを貫通。
 
 **新たに必要になったタスク**:
--
+- なし。
 
 **技術的理由でスキップしたタスク**（該当する場合のみ）:
--
+- なし。
 
 ### 学んだこと
 
 **技術的な学び**:
--
+- MV3 SW は非永続のため、設定はモジュールスコープにキャッシュし `subscribe` で更新、未構築時のみ `get()` フォールバックする構成が有効。
+- `onBeforeNavigate` の `frameId===0` ガードでメインフレームのフルページ遷移のみを対象化。`chrome.tabs.update` の失敗は try/catch で握りつぶし監視全体を止めない。
 
 **プロセス上の改善点**:
--
+- 実機確認（フェーズ5）はユーザー操作前提のため、後続ステップ完了後にまとめて確認・確定した。
 
 ### 次回への改善提案
--
+- popup/options 実装前は SW デバッグコンソール経由で設定変更が必要だった。UI 完成後は実機確認が容易になる。
