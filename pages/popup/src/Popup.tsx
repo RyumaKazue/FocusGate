@@ -1,61 +1,96 @@
 import '@src/Popup.css';
 import { t } from '@extension/i18n';
-import { PROJECT_URL_OBJECT, useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
-import { exampleThemeStorage } from '@extension/storage';
-import { cn, ErrorDisplay, LoadingSpinner, ToggleButton } from '@extension/ui';
+import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
+import { focusgateSettingsStorage } from '@extension/storage';
+import { cn, ErrorDisplay, LoadingSpinner } from '@extension/ui';
+import type { BlockSite, WarningLevel } from '@extension/block-engine';
 
-const notificationOptions = {
-  type: 'basic',
-  iconUrl: chrome.runtime.getURL('icon-34.png'),
-  title: 'Injecting content script error',
-  message: 'You cannot inject script here!',
-} as const;
+const Switch = ({ checked, onChange, label }: { checked: boolean; onChange: () => void; label: string }) => (
+  <button
+    type="button"
+    role="switch"
+    aria-checked={checked}
+    aria-label={label}
+    onClick={onChange}
+    className={cn(
+      'relative inline-flex h-5 w-9 shrink-0 items-center rounded-full transition-colors',
+      checked ? 'bg-blue-500' : 'bg-gray-400',
+    )}>
+    <span
+      className={cn(
+        'inline-block h-4 w-4 transform rounded-full bg-white transition-transform',
+        checked ? 'translate-x-4' : 'translate-x-1',
+      )}
+    />
+  </button>
+);
+
+const LevelSelector = ({ level, onSelect }: { level: WarningLevel; onSelect: (level: WarningLevel) => void }) => (
+  <div className="inline-flex overflow-hidden rounded border border-gray-300">
+    {(['B', 'C'] as const).map(value => (
+      <button
+        key={value}
+        type="button"
+        onClick={() => onSelect(value)}
+        className={cn(
+          'px-3 py-1 text-xs font-medium transition-colors',
+          level === value ? 'bg-blue-500 text-white' : 'bg-white text-gray-700 hover:bg-gray-100',
+        )}>
+        {value === 'B' ? t('levelB') : t('levelC')}
+      </button>
+    ))}
+  </div>
+);
+
+const SiteRow = ({ site }: { site: BlockSite }) => (
+  <li className="flex items-center justify-between gap-2 py-1">
+    <span className={cn('truncate text-xs', site.enabled ? 'text-gray-800' : 'text-gray-400')}>
+      {site.label ?? site.domain}
+    </span>
+    <Switch
+      checked={site.enabled}
+      onChange={() => focusgateSettingsStorage.toggleSite(site.id)}
+      label={site.label ?? site.domain}
+    />
+  </li>
+);
 
 const Popup = () => {
-  const { isLight } = useStorage(exampleThemeStorage);
-  const logo = isLight ? 'popup/logo_vertical.svg' : 'popup/logo_vertical_dark.svg';
-
-  const goGithubSite = () => chrome.tabs.create(PROJECT_URL_OBJECT);
-
-  const injectContentScript = async () => {
-    const [tab] = await chrome.tabs.query({ currentWindow: true, active: true });
-
-    if (tab.url!.startsWith('about:') || tab.url!.startsWith('chrome:')) {
-      chrome.notifications.create('inject-error', notificationOptions);
-    }
-
-    await chrome.scripting
-      .executeScript({
-        target: { tabId: tab.id! },
-        files: ['/content-runtime/example.iife.js', '/content-runtime/all.iife.js'],
-      })
-      .catch(err => {
-        // Handling errors related to other paths
-        if (err.message.includes('Cannot access a chrome:// URL')) {
-          chrome.notifications.create('inject-error', notificationOptions);
-        }
-      });
-  };
+  const settings = useStorage(focusgateSettingsStorage);
 
   return (
-    <div className={cn('App', isLight ? 'bg-slate-50' : 'bg-gray-800')}>
-      <header className={cn('App-header', isLight ? 'text-gray-900' : 'text-gray-100')}>
-        <button onClick={goGithubSite}>
-          <img src={chrome.runtime.getURL(logo)} className="App-logo" alt="logo" />
-        </button>
-        <p>
-          Edit <code>pages/popup/src/Popup.tsx</code>
-        </p>
-        <button
-          className={cn(
-            'mt-4 rounded px-4 py-1 font-bold shadow hover:scale-105',
-            isLight ? 'bg-blue-200 text-black' : 'bg-gray-700 text-white',
-          )}
-          onClick={injectContentScript}>
-          {t('injectButton')}
-        </button>
-        <ToggleButton>{t('toggleTheme')}</ToggleButton>
+    <div className="flex min-w-[18rem] flex-col gap-3 bg-slate-50 p-4 text-gray-900">
+      <header className="flex items-center justify-between">
+        <h1 className="text-base font-bold">{t('popupTitle')}</h1>
+        <Switch
+          checked={settings.globalEnabled}
+          onChange={() => focusgateSettingsStorage.setGlobalEnabled(!settings.globalEnabled)}
+          label={t('globalEnabled')}
+        />
       </header>
+
+      <div className="flex items-center justify-between">
+        <span className="text-xs font-medium text-gray-600">{t('warningLevel')}</span>
+        <LevelSelector
+          level={settings.warningLevel}
+          onSelect={level => focusgateSettingsStorage.setWarningLevel(level)}
+        />
+      </div>
+
+      <ul className="flex flex-col divide-y divide-gray-200 border-y border-gray-200">
+        {settings.sites.length === 0 ? (
+          <li className="py-2 text-center text-xs text-gray-400">{t('noSites')}</li>
+        ) : (
+          settings.sites.map(site => <SiteRow key={site.id} site={site} />)
+        )}
+      </ul>
+
+      <button
+        type="button"
+        onClick={() => chrome.runtime.openOptionsPage()}
+        className="rounded bg-blue-500 px-3 py-1.5 text-xs font-medium text-white shadow hover:bg-blue-600">
+        {t('openOptions')}
+      </button>
     </div>
   );
 };
