@@ -41,5 +41,68 @@
   },
   "displayErrorReset": {
     "message": "다시 실행합니다."
+  },
+  "popupTitle": {
+    "message": "FocusGate"
+  },
+  "globalEnabled": {
+    "message": "차단 사용"
+  },
+  "warningLevel": {
+    "message": "경고 수준"
+  },
+  "levelB": {
+    "message": "확인 (B)"
+  },
+  "levelC": {
+    "message": "차단 (C)"
+  },
+  "openOptions": {
+    "message": "차단 목록 관리"
+  },
+  "optionsTitle": {
+    "message": "차단 목록"
+  },
+  "addSite": {
+    "message": "추가"
+  },
+  "domainPlaceholder": {
+    "message": "example.com"
+  },
+  "labelPlaceholder": {
+    "message": "라벨 (선택)"
+  },
+  "edit": {
+    "message": "편집"
+  },
+  "save": {
+    "message": "저장"
+  },
+  "cancel": {
+    "message": "취소"
+  },
+  "delete": {
+    "message": "삭제"
+  },
+  "noSites": {
+    "message": "등록된 사이트가 없습니다."
+  },
+  "errorInvalidDomain": {
+    "message": "잘못된 도메인입니다."
+  },
+  "errorDuplicateDomain": {
+    "message": "이미 등록된 도메인입니다."
+  },
+  "overlayHeading": {
+    "message": "잠시 멈추세요"
+  },
+  "overlayMessage": {
+    "message": "이 사이트는 집중을 방해할 수 있습니다. 정말 열까요?"
+  },
+  "proceed": {
+    "message": "그래도 진행"
+  },
+  "stopBrowsing": {
+    "message": "돌아가기"
   }
 }

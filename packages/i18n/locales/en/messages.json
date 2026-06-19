@@ -41,5 +41,68 @@
   },
   "displayErrorReset": {
     "message": "Run Again"
+  },
+  "popupTitle": {
+    "message": "FocusGate"
+  },
+  "globalEnabled": {
+    "message": "Blocking enabled"
+  },
+  "warningLevel": {
+    "message": "Warning level"
+  },
+  "levelB": {
+    "message": "Confirm (B)"
+  },
+  "levelC": {
+    "message": "Block (C)"
+  },
+  "openOptions": {
+    "message": "Manage block list"
+  },
+  "optionsTitle": {
+    "message": "Block list"
+  },
+  "addSite": {
+    "message": "Add"
+  },
+  "domainPlaceholder": {
+    "message": "example.com"
+  },
+  "labelPlaceholder": {
+    "message": "Label (optional)"
+  },
+  "edit": {
+    "message": "Edit"
+  },
+  "save": {
+    "message": "Save"
+  },
+  "cancel": {
+    "message": "Cancel"
+  },
+  "delete": {
+    "message": "Delete"
+  },
+  "noSites": {
+    "message": "No sites registered yet."
+  },
+  "errorInvalidDomain": {
+    "message": "Invalid domain."
+  },
+  "errorDuplicateDomain": {
+    "message": "This domain is already registered."
+  },
+  "overlayHeading": {
+    "message": "Take a breath"
+  },
+  "overlayMessage": {
+    "message": "This site can break your focus. Do you really want to open it?"
+  },
+  "proceed": {
+    "message": "Proceed anyway"
+  },
+  "stopBrowsing": {
+    "message": "Go back"
   }
 }

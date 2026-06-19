@@ -410,6 +410,9 @@ importers:
 
   pages/content-ui:
     dependencies:
+      '@extension/block-engine':
+        specifier: workspace:*
+        version: link:../../packages/block-engine
       '@extension/env':
         specifier: workspace:*
         version: link:../../packages/env
@@ -504,6 +507,9 @@ importers:
 
   pages/options:
     dependencies:
+      '@extension/block-engine':
+        specifier: workspace:*
+        version: link:../../packages/block-engine
       '@extension/i18n':
         specifier: workspace:*
         version: link:../../packages/i18n
@@ -529,6 +535,9 @@ importers:
 
   pages/popup:
     dependencies:
+      '@extension/block-engine':
+        specifier: workspace:*
+        version: link:../../packages/block-engine
       '@extension/i18n':
         specifier: workspace:*
         version: link:../../packages/i18n

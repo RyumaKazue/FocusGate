@@ -65,6 +65,10 @@ const manifest = {
       js: ['content-ui/example.iife.js'],
     },
     {
+      matches: ['http://*/*', 'https://*/*'],
+      js: ['content-ui/focusgate.iife.js'],
+    },
+    {
       matches: ['http://*/*', 'https://*/*', '<all_urls>'],
       css: ['content.css'],
     },
