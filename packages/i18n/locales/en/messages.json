@@ -1,31 +1,11 @@
 {
   "extensionDescription": {
     "description": "Extension description",
-    "message": "Chrome extension boilerplate developed with Vite, React and Typescript"
+    "message": "A Chrome extension that gradually curbs distracting sites to protect your focus."
   },
   "extensionName": {
     "description": "Extension name",
-    "message": "Chrome extension boilerplate"
-  },
-  "toggleTheme": {
-    "message": "Toggle theme"
-  },
-  "injectButton": {
-    "message": "Click to inject Content Scripts"
-  },
-  "greeting": {
-    "description": "Greeting message",
-    "message": "Hello, My name is $NAME$",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "John Doe"
-      }
-    }
-  },
-  "hello": {
-    "description": "Placeholder example",
-    "message": "Hello $1"
+    "message": "FocusGate"
   },
   "displayErrorInfo": {
     "message": "Error occur"

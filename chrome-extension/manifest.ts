@@ -12,9 +12,6 @@ const packageJson = JSON.parse(readFileSync('./package.json', 'utf8'));
  * Must be unique to your extension to upload to addons.mozilla.org
  * (you can delete if you only want a chrome extension)
  *
- * @prop permissions
- * Firefox doesn't support sidePanel (It will be deleted in manifest parser)
- *
  * @prop content_scripts
  * css: ['content.css'], // public folder
  */
@@ -31,7 +28,7 @@ const manifest = {
   version: packageJson.version,
   description: '__MSG_extensionDescription__',
   host_permissions: ['<all_urls>'],
-  permissions: ['storage', 'scripting', 'tabs', 'notifications', 'sidePanel', 'webNavigation'],
+  permissions: ['storage', 'scripting', 'tabs', 'notifications', 'webNavigation'],
   options_page: 'options/index.html',
   background: {
     service_worker: 'background.js',
@@ -41,29 +38,10 @@ const manifest = {
     default_popup: 'popup/index.html',
     default_icon: 'icon-34.png',
   },
-  chrome_url_overrides: {
-    newtab: 'new-tab/index.html',
-  },
   icons: {
     '128': 'icon-128.png',
   },
   content_scripts: [
-    {
-      matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-      js: ['content/all.iife.js'],
-    },
-    {
-      matches: ['https://example.com/*'],
-      js: ['content/example.iife.js'],
-    },
-    {
-      matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-      js: ['content-ui/all.iife.js'],
-    },
-    {
-      matches: ['https://example.com/*'],
-      js: ['content-ui/example.iife.js'],
-    },
     {
       matches: ['http://*/*', 'https://*/*'],
       js: ['content-ui/focusgate.iife.js'],
@@ -73,16 +51,12 @@ const manifest = {
       css: ['content.css'],
     },
   ],
-  devtools_page: 'devtools/index.html',
   web_accessible_resources: [
     {
       resources: ['*.js', '*.css', '*.svg', 'icon-128.png', 'icon-34.png', 'blocked.html'],
       matches: ['*://*/*'],
     },
   ],
-  side_panel: {
-    default_path: 'side-panel/index.html',
-  },
 } satisfies ManifestType;
 
 export default manifest;

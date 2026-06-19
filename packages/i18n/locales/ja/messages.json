@@ -7,26 +7,6 @@
     "description": "Extension name",
     "message": "FocusGate"
   },
-  "toggleTheme": {
-    "message": "テーマを切り替える"
-  },
-  "injectButton": {
-    "message": "クリックしてコンテンツスクリプトを挿入"
-  },
-  "greeting": {
-    "description": "Greeting message",
-    "message": "こんにちは、$NAME$ さん",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "John Doe"
-      }
-    }
-  },
-  "hello": {
-    "description": "Placeholder example",
-    "message": "こんにちは $1"
-  },
   "displayErrorInfo": {
     "message": "エラーが発生しました"
   },

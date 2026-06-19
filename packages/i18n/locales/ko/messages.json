@@ -1,31 +1,11 @@
 {
   "extensionDescription": {
     "description": "Extension description",
-    "message": "React, Typescript, Vite를 사용한 크롬 익스텐션 보일러플레이트입니다."
+    "message": "집중을 방해하는 사이트를 단계적으로 억제하는 Chrome 확장 프로그램"
   },
   "extensionName": {
     "description": "Extension name",
-    "message": "크롬 익스텐션 보일러플레이트"
-  },
-  "toggleTheme": {
-    "message": "테마 변경"
-  },
-  "injectButton": {
-    "message": "콘텐츠 스크립트를 삽입하려면 클릭하세요."
-  },
-  "greeting": {
-    "description": "인사 메시지",
-    "message": "안녕하세요, 제 이름은 $NAME$입니다.",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "홍길동"
-      }
-    }
-  },
-  "hello": {
-    "description": "Placeholder 예시",
-    "message": "안녕하세요, $1님."
+    "message": "FocusGate"
   },
   "displayErrorInfo": {
     "message": "오류 발생"
