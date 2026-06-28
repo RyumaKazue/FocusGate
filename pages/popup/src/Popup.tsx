@@ -59,7 +59,7 @@ const Popup = () => {
   const settings = useStorage(focusgateSettingsStorage);
 
   return (
-    <div className="flex min-w-[18rem] flex-col gap-3 bg-slate-50 p-4 text-gray-900">
+    <div className="flex h-full min-w-[18rem] flex-col gap-3 bg-slate-50 p-4 text-gray-900">
       <header className="flex items-center justify-between">
         <h1 className="text-base font-bold">{t('popupTitle')}</h1>
         <Switch
@@ -77,7 +77,7 @@ const Popup = () => {
         />
       </div>
 
-      <ul className="flex flex-col divide-y divide-gray-200 border-y border-gray-200">
+      <ul className="flex flex-1 flex-col divide-y divide-gray-200 overflow-y-auto border-y border-gray-200">
         {settings.sites.length === 0 ? (
           <li className="py-2 text-center text-xs text-gray-400">{t('noSites')}</li>
         ) : (
